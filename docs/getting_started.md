@@ -118,7 +118,17 @@ stats(
 
 Sorts the data set, optionally by a given attribute.
 
+### splice(index, howMany, addEls...)
 
+Performs a splice operation on the internal data set.
+
+### slice(start, end)
+
+Performs a slice operation on the internal data set.
+
+### push(els...)
+
+Performs a push operation on the internal data set.
 
 ### min()
 
@@ -143,6 +153,18 @@ Returns the first quartile of the data set.
 ### q3()
 
 Returns the third quartile of the data set.
+
+### findOutliers
+
+Returns a new stats object that contains all the outliers in the data set. Outliers are determined using the 1.5 x IQR away from the median test.
+
+### testOutlier(num)
+
+Returns a boolean, whether or not the given number would be an outlier in the current data set. Outliers are determined using the 1.5 x IQR away from the median test.
+
+### removeOutliers()
+
+Returns a new stats object with all the outliers removed. Outliers are determined using the 1.5 x IQR away from the median test.
 
 ### stdDev()
 
