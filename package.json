@@ -1,10 +1,10 @@
 {
 	"name": "statsjs",
 	"description": "Provides functions for many of the statistical operations that you might need",
-	"version": "0.0.0",
+	"version": "1.0.1",
 	"author": "Angus Gibbs (http://angusgibbs.com)",
 	"homepage": "http://github.com/angusgibbs/statsjs",
-	"keywords": ["math", "stats", "statistics", "average", "mean", "min", "max", "standard", "deviation", "regression", "quartile", "median"],
+	"keywords": ["math", "stats", "statistics", "average", "mean", "min", "max", "standard", "deviation", "regression", "quartile", "median", "outliers"],
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/angusgibbs/statsjs.git"
