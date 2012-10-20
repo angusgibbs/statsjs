@@ -1,0 +1,26 @@
+{
+	"name": "statsjs",
+	"description": "Provides functions for many of the statistical operations that you might need",
+	"version": "0.0.0",
+	"author": "Angus Gibbs (http://angusgibbs.com)",
+	"homepage": "http://github.com/angusgibbs/statsjs",
+	"keywords": ["math", "stats", "statistics", "average", "mean", "min", "max", "standard", "deviation", "regression", "quartile", "median"],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/angusgibbs/statsjs.git"
+	},
+	"bugs": {
+		"url": "http://github.com/angusgibbs/statsjs/issues"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://github.com/angusgibbs/statsjs/blob/master/LICENSE"
+		}
+	],
+	"main": "lib/stats",
+	"devDependencies": {
+		"mocha": "1.4.x",
+		"expect.js": "0.1.x"
+	}
+}
