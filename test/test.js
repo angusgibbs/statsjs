@@ -50,6 +50,34 @@ describe('#q3()', function() {
 	});
 });
 
+describe('#iqr()', function() {
+	it('should return the interquartile range of an array', function() {
+		expect(stats(4, 6, 1, 5, 7, 2, 6, 3).iqr()).to.equal(3.5);
+		expect(stats(12, 19, 4, 1, 2, 5, 8).iqr()).to.equal(10);
+	});
+});
+
+describe('outliers', function() {
+	describe('#findOutliers()', function() {
+		it('should find all the outliers', function() {
+			expect(stats(1, 8, 4, 7, 2, -19, 100).findOutliers().toArray()).to.eql([-19, 100]);
+		});
+	});
+
+	describe('#testOutlier()', function() {
+		it('should determine whether a number would be an outlier', function() {
+			expect(stats(1, 8, 4, 7, 2, -19, 100).testOutlier(100)).to.be(true);
+			expect(stats(1, 8, 4, 7, 2, -19, 100).testOutlier(3)).to.be(false);
+		});
+	});
+
+	describe('#removeOutliers()', function() {
+		it('should remove any outliers from a data set', function() {
+			expect(stats(1, 8, 4, 7, 2, -19, 100).removeOutliers().toArray()).to.eql([1, 8, 4, 7, 2]);
+		});
+	});
+});
+
 describe('#stdDev()', function() {
 	it('should calculate the standard deviation of a data set', function() {
 		expect(
@@ -208,6 +236,25 @@ describe('#sort()', function() {
 
 	it('should sort a list by an attribute', function() {
 		expect(stats('hello', 'mr', 'guy').sort('length').toArray()).to.eql(['mr', 'guy', 'hello']);
+	});
+});
+
+describe('#splice()', function() {
+	it('should splice the original array', function() {
+		expect(stats(1, 2, 3, 4).splice(2, 1, 6, 7).toArray()).to.eql([1, 2, 6, 7, 4]);
+	});
+});
+
+describe('#slice()', function() {
+	it('should slice the original array', function() {
+		expect(stats(1, 2, 3, 4).slice(2).toArray()).to.eql([3, 4]);
+		expect(stats(1, 2, 3, 4).slice(1, 3).toArray()).to.eql([2, 3]);
+	});
+});
+
+describe('#push()', function() {
+	it('should push elements to the array', function() {
+		expect(stats(1, 2, 3, 4).push(5, 6).toArray()).to.eql([1, 2, 3, 4, 5, 6]);
 	});
 });
 
