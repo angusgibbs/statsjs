@@ -269,3 +269,45 @@ describe('#set()', function() {
 		expect(stats(1, 2, 3, 4).set(2, 5).get(2)).to.equal(5);
 	});
 });
+
+describe('stats.list()', function() {
+	it('should create a stats object with the bounds', function() {
+		expect(stats.list(0, 5).toArray()).to.eql([0, 1, 2, 3, 4, 5]);
+	});
+});
+
+describe('stats.factorial()', function() {
+	it('should compute the factorial of a number', function() {
+		expect(stats.factorial(4)).to.equal(24);
+		expect(stats.factorial(1)).to.equal(1);
+		expect(stats.factorial(7)).to.equal(5040);
+	});
+
+	it('should compute the factorial of 0 correctly', function() {
+		expect(stats.factorial(0)).to.equal(1);
+	});
+});
+
+describe('stats.binompdf()', function() {
+	it('should compute the probability if a specific event is passed', function() {
+		expect(Math.abs(stats.binompdf(20, .15, 4)) - .182122).to.be.lessThan(.000001);
+	});
+	
+	it('should return an array if no specific event is passed', function() {
+		var ret = stats.binompdf(4, .15);
+		var expected = [.52201, .36848, .09754, .01148, .00051];
+		var tolerance = .00001;
+
+		for (var i = 0; i < ret.length; i++) {
+			expect(Math.abs(ret[i] - expected[i])).to.be.lessThan(tolerance);
+		}
+	});
+});
+
+describe('stats.binomcdf()', function() {
+	it('should compute the cumulative probability of an event', function() {
+		expect(
+			Math.abs(stats.binomcdf(20, .6, 10) - .244663)
+		).to.be.lessThan(.000001);
+	});
+});
