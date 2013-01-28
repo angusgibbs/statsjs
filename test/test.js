@@ -239,22 +239,85 @@ describe('#sort()', function() {
 	});
 });
 
-describe('#splice()', function() {
-	it('should splice the original array', function() {
-		expect(stats(1, 2, 3, 4).splice(2, 1, 6, 7).toArray()).to.eql([1, 2, 6, 7, 4]);
-	});
-});
+describe('Native array features', function() {
+	describe('#pop()', function() {
+		it('should return the last element from an array', function() {
+			expect(stats(1, 2, 3).pop()).to.equal(3);
+		});
 
-describe('#slice()', function() {
-	it('should slice the original array', function() {
-		expect(stats(1, 2, 3, 4).slice(2).toArray()).to.eql([3, 4]);
-		expect(stats(1, 2, 3, 4).slice(1, 3).toArray()).to.eql([2, 3]);
+		it('should remove the last element from an array', function() {
+			var s = stats(1, 2, 3);
+			s.pop();
+			expect(s.toArray()).to.eql([1, 2]);
+		});
 	});
-});
 
-describe('#push()', function() {
-	it('should push elements to the array', function() {
-		expect(stats(1, 2, 3, 4).push(5, 6).toArray()).to.eql([1, 2, 3, 4, 5, 6]);
+	describe('#push()', function() {
+		it('should push elements to the array', function() {
+			expect(stats(1, 2, 3, 4).push(5, 6)).to.equal(6);
+		});
+	});
+
+	describe('#reverse()', function() {
+		it('should reverse the element in the array', function() {
+			expect(stats(1, 2, 3, 4).reverse().toArray()).to.eql([4, 3, 2, 1]);
+		});
+	});
+
+	describe('#shift()', function() {
+		it('should return the first element from an array', function() {
+			expect(stats(1, 2, 3).shift()).to.equal(1);
+		});
+
+		it('should remove the first element from an array', function() {
+			var s = stats(1, 2, 3);
+			s.shift();
+			expect(s.toArray()).to.eql([2, 3]);
+		});
+	});
+
+	describe('#splice()', function() {
+		it('should return the extracted portion of the array', function() {
+			expect(stats(1, 2, 3, 4).splice(2, 1, 6, 7)).to.eql([3]);
+		});
+
+		it('should splice the original array', function() {
+			var s = stats(1, 2, 3, 4);
+			s.splice(2, 1, 6, 7);
+			expect(s.toArray()).to.eql([1, 2, 6, 7, 4]);
+		});
+	});
+
+	describe('#unshift()', function() {
+		it('should return the length of the new array', function() {
+			expect(stats(3, 4).unshift(1, 2)).to.equal(4);
+		});
+
+		it('should add elements to the beginning of the array', function() {
+			var s = stats(3, 4);
+			s.unshift(1, 2);
+			expect(s.toArray()).to.eql([1, 2, 3, 4]);
+		});
+	});
+
+	describe('#concat()', function() {
+		it('should concatenate two arrays', function() {
+			expect(stats(1, 2).concat([3, 4]).toArray()).to.eql([1, 2, 3, 4]);
+		});
+	});
+
+	describe('#join()', function() {
+		it('should join together the elements of an array', function() {
+			expect(stats(1, 2, 3, 4).join().toArray()).to.eql('1,2,3,4');
+			expect(stats(1, 2, 3, 4).join('').toArray()).to.eql('1234');
+		});
+	});
+
+	describe('#slice()', function() {
+		it('should slice the original array', function() {
+			expect(stats(1, 2, 3, 4).slice(2).toArray()).to.eql([3, 4]);
+			expect(stats(1, 2, 3, 4).slice(1, 3).toArray()).to.eql([2, 3]);
+		});
 	});
 });
 

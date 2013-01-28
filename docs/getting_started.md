@@ -16,9 +16,9 @@ nums = stats([1, 2, 3, 4]);
 nums = stats(1, 2, 3, 4);
 ```
 
-## Methods
+## Methods on the stats object you created
 
-### toArray()
+### #toArray()
 
 Returns the data that the stats object is wrapping around.
 
@@ -27,11 +27,11 @@ console.log(stats(1, 2, 3, 4).toArray());
 // => [1, 2, 3, 4]
 ```
 
-### size()
+### #size()
 
 Returns the number of elements in the data set.
 
-### clone()
+### #clone()
 
 Creates a new stats object with the same data as the current one that can be modified without affecting the original data set.
 
@@ -49,7 +49,7 @@ original.toArray();
 // => [1, 2, 3, 4]
 ```
 
-### set(*index*, *value*)
+### #set(*index*, *value*)
 
 Sets the element at the given index to the given value.
 
@@ -64,11 +64,11 @@ nums.toArray();
 // => [1, 2, 5, 10];
 ```
 
-### get(*index*)
+### #get(*index*)
 
 Returns the element at the given index.
 
-### each(*fn*)
+### #each(*fn*)
 
 Calls *fn* on each element in the array. *fn* is called with three parameters: the current element, the index, and the whole array.
 
@@ -85,7 +85,7 @@ console.log(sum);
 // => 10
 ```
 
-### map(*fn*)
+### #map(*fn*)
 
 Similar to `#each()` but each element is set to the return value of *fn* being called on it. *fn* receives the same arguments as it does for `#each()`.
 
@@ -98,7 +98,7 @@ stats(1, 2, 3, 4).map(function(num) {
 // => [1, 4, 9, 16]
 ```
 
-### pluck(*attr*)
+### #pluck(*attr*)
 
 Returns a new stats object whose array contains the value of the attribute passed for each element.
 
@@ -114,63 +114,55 @@ stats(
 // => [5, 7, 8, 10]
 ```
 
-### sort(*attr*)
+### Array Methods
+
+Any stats object has access to all of the native JavaScript array methods listed on [the MDN Array Documentation page](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array) down to slice.
+
+### #sort([*attr* = null])
 
 Sorts the data set, optionally by a given attribute.
 
-### splice(*index*, *howMany*, *addEls...*)
-
-Performs a splice operation on the internal data set.
-
-### slice(*start*, *end*)
-
-Performs a slice operation on the internal data set.
-
-### push(*els...*)
-
-Performs a push operation on the internal data set.
-
-### min()
+### #min()
 
 Returns the smallest number in the array.
 
-### max()
+### #max()
 
 Returns the largest number in the array.
 
-### mean()
+### #mean()
 
 Returns the mean of the data set.
 
-### median()
+### #median()
 
 Returns the median of the data set.
 
-### q1()
+### #q1()
 
 Returns the first quartile of the data set.
 
-### q3()
+### #q3()
 
 Returns the third quartile of the data set.
 
-### findOutliers()
+### #findOutliers()
 
 Returns a new stats object that contains all the outliers in the data set. Outliers are determined using the 1.5 x IQR away from the median test.
 
-### testOutlier(*num*)
+### #testOutlier(*num*)
 
 Returns a boolean, whether or not the given number would be an outlier in the current data set. Outliers are determined using the 1.5 x IQR away from the median test.
 
-### removeOutliers()
+### #removeOutliers()
 
 Returns a new stats object with all the outliers removed. Outliers are determined using the 1.5 x IQR away from the median test.
 
-### stdDev()
+### #stdDev()
 
 Returns the standard deviation of the data set.
 
-### expReg()
+### #expReg()
 
 Calculates the exponential regression equation for the data set, in the form y = a * b^x. Returns a JSON object with the coefficient (a), base (b), and correlation coefficient (r) for the linearized data.
 
@@ -191,7 +183,7 @@ stats([
 // => { base: 1.32296, coefficient: 2.0072, r: 0.999013 }
 ```
 
-### linReg()
+### #linReg()
 
 Calculates the linear regression equation for the data set, in the form y = a + b*x. Returns a JSON object with the slope (b), yIntercept(a), and correlation coefficient (r).
 
@@ -214,7 +206,7 @@ stats([
 // => { slope: -0.089358, yIntercept: 3.61352, r: -0.693356 }
 ```
 
-### powReg()
+### #powReg()
 
 Calculates the power regression line for the data set, in the form y = a * x^b. Returns a JSON object with the coefficient (a), exponent (b), and correlation coefficient (r) for the linearized data.
 
@@ -230,3 +222,47 @@ stats([
 ]).powReg()
 // => { coefficient: 32.4824, exponent: 0.293188, r: 0.990325 }
 ```
+
+## Methods on the global stats object
+
+### stats.list(*lower*, *upper*[, *step* = 1])
+
+Creates a list from `lower` to `upper` (inclusive), optionally counting by `step`.
+
+```javascript
+stats.list(1, 5).toArray();
+// => [1, 2, 3, 4, 5]
+
+stats.list(1, 10, 2).toArray();
+// => [1, 3, 5, 7, 9]
+```
+
+### stats.factorial(*num*)
+
+Computes the factorial of the given number.
+
+### stats.permutation(*n*, *r*)
+
+Computes the permutation of `n` choose `r`. Alised as `stats.nPr`.
+
+### stats.combination(*n*, *r*)
+
+Computes the combination of `n` choose `r`. Alised as `stats.nCr`.
+
+### stats.binompdf(*trials*, *p*[, *x*])
+
+Computes the probability of a binomial event given the number of trials and probability of success.
+
+If the event number (`x`) is not passed, an array with all the probabilities from 0 to the number of trials is returned.
+
+```javascript
+stats.binomcdf(2, 0.5, 1);
+// => 0.5
+
+stats.binomcdf(5, 0.25);
+// => [0.0625, 0.25, 0.375, 0.25, 0.0625]
+```
+
+### stats.binomcdf(*trials*, *p*, *x*)
+
+Computes the cumulative probability of a binomial event (i.e., P(x <= `x`)), given the number of trials, probability of success, and event number.
