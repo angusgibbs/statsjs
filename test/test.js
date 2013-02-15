@@ -374,3 +374,19 @@ describe('stats.binomcdf()', function() {
 		).to.be.lessThan(.000001);
 	});
 });
+
+describe('stats.geompdf()', function() {
+	it('should compute the probability of a geometric event', function() {
+		expect(
+			Math.abs(stats.geompdf(.25, 4) - .105469)
+		).to.be.lessThan(.000001);
+	});
+});
+
+describe('stats.geomcdf()', function() {
+	it('should compute the cumulative probability of an event', function() {
+		expect(
+			Math.abs(stats.geomcdf(.25, 4) - .683594)
+		).to.be.lessThan(.000001);
+	});
+});
