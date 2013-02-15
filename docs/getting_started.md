@@ -266,3 +266,11 @@ stats.binomcdf(5, 0.25);
 ### stats.binomcdf(*trials*, *p*, *x*)
 
 Computes the cumulative probability of a binomial event (i.e., P(x <= `x`)), given the number of trials, probability of success, and event number.
+
+### stats.geompdf(*p*, *x*)
+
+Computes the probability of a geometric event (i.e., P(x = `x`)), given the probability of success and event number.
+
+### stats.geomcdf(*p*, *x*)
+
+Computes the cumulative probability of a geometric event (i.e., P(x <= `x`)), given the probability of success and event number.
