@@ -262,10 +262,10 @@ Computes the probability of a binomial event given the number of trials and prob
 If the event number (`x`) is not passed, an array with all the probabilities from 0 to the number of trials is returned.
 
 ```javascript
-stats.binomcdf(2, 0.5, 1);
+stats.binompdf(2, 0.5, 1);
 // => 0.5
 
-stats.binomcdf(5, 0.25);
+stats.binompdf(5, 0.25);
 // => [0.0625, 0.25, 0.375, 0.25, 0.0625]
 ```
 
