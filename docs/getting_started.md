@@ -120,7 +120,13 @@ Any stats object has access to all of the native JavaScript array methods listed
 
 ### #sort([*attr* = null])
 
-Sorts the data set, optionally by a given attribute.
+Sorts the data set in ascending order
+
+If you pass `true`, the sort will be in descending order.
+
+If you pass a string, it will sort in ascending order by the given attribute.
+
+If you pass a function, it will be used as the comparator;
 
 ### #min()
 

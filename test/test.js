@@ -234,8 +234,18 @@ describe('#sort()', function() {
 		expect(stats(1, 4, 2, 5, 3).sort().toArray()).to.eql([1, 2, 3, 4, 5]);
 	});
 
+	it('should be able to sort in descending order', function() {
+		expect(stats(1, 4, 2, 5, 3).sort(true).toArray()).to.eql([5, 4, 3, 2, 1]);
+	});
+
 	it('should sort a list by an attribute', function() {
 		expect(stats('hello', 'mr', 'guy').sort('length').toArray()).to.eql(['mr', 'guy', 'hello']);
+	});
+
+	it('should accept a closure', function() {
+		expect(stats('hello', 'mr', 'guy').sort(function(a, b) {
+			return a.length - b.length;
+		}).toArray()).to.eql(['mr', 'guy', 'hello']);
 	});
 });
 
