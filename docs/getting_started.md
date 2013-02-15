@@ -126,7 +126,7 @@ If you pass `true`, the sort will be in descending order.
 
 If you pass a string, it will sort in ascending order by the given attribute.
 
-If you pass a function, it will be used as the comparator;
+If you pass a function, it will be used as the comparator.
 
 ### #min()
 
