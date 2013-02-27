@@ -80,9 +80,7 @@ describe('outliers', function() {
 
 describe('#stdDev()', function() {
 	it('should calculate the standard deviation of a data set', function() {
-		expect(
-			Math.abs(stats(2, 7, 9, 12, 15, 1, 6, 8).stdDev() - 4.690416)
-		).to.be.lessThan(0.000001);
+		expect(stats(2, 7, 9, 12, 15, 1, 6, 8).stdDev()).to.be.within(0.000001).of(4.690416);
 	});
 });
 
@@ -102,9 +100,9 @@ describe('#expReg()', function() {
 			{ x: 10, y: 31.7 }
 		]).expReg();
 
-		expect(Math.abs(reg.base - 1.32296)).to.be.lessThan(0.00001);
-		expect(Math.abs(reg.coefficient - 2.0072)).to.be.lessThan(0.0001);
-		expect(Math.abs(reg.r - 0.999013)).to.be.lessThan(0.000001);
+		expect(reg.base).to.be.within(.00001).of(1.32296);
+		expect(reg.coefficient).to.be.within(.0001).of(2.0072);
+		expect(reg.r).to.be.within(.000001).of(.999013);
 	});
 });
 
@@ -126,9 +124,9 @@ describe('#linReg()', function() {
 			{ x: 30, y: 0.5 }
 		]).linReg();
 
-		expect(Math.abs(reg.slope + 0.089358)).to.be.lessThan(0.000001);
-		expect(Math.abs(reg.yIntercept - 3.61352)).to.be.lessThan(0.00001);
-		expect(Math.abs(reg.r + 0.693356)).to.be.lessThan(0.000001);
+		expect(reg.slope).to.be.within(.000001).of(-.089358);
+		expect(reg.yIntercept).to.be.within(.00001).of(3.61352);
+		expect(reg.r).to.be.within(.000001).of(-.693356);
 	});
 });
 
@@ -144,9 +142,9 @@ describe('#powReg()', function() {
 			{ x: 30, y: 85 }
 		]).powReg();
 
-		expect(Math.abs(reg.coefficient - 32.4824)).to.be.lessThan(0.0001);
-		expect(Math.abs(reg.exponent - 0.293188)).to.be.lessThan(0.000001);
-		expect(Math.abs(reg.r - 0.990325)).to.be.lessThan(0.000001);
+		expect(reg.coefficient).to.be.within(.0001).of(32.4824);
+		expect(reg.exponent).to.be.within(.000001).of(.293188);
+		expect(reg.r).to.be.within(.000001).of(.990325);
 	});
 });
 
@@ -363,7 +361,7 @@ describe('stats.factorial()', function() {
 
 describe('stats.binompdf()', function() {
 	it('should compute the probability if a specific event is passed', function() {
-		expect(Math.abs(stats.binompdf(20, .15, 4)) - .182122).to.be.lessThan(.000001);
+		expect(stats.binompdf(20, .15, 4)).to.be.within(.000001).of(.182122);
 	});
 	
 	it('should return an array if no specific event is passed', function() {
@@ -372,31 +370,43 @@ describe('stats.binompdf()', function() {
 		var tolerance = .00001;
 
 		for (var i = 0; i < ret.length; i++) {
-			expect(Math.abs(ret[i] - expected[i])).to.be.lessThan(tolerance);
+			expect(ret[i]).to.be.within(tolerance).of(expected[i]);
 		}
 	});
 });
 
 describe('stats.binomcdf()', function() {
 	it('should compute the cumulative probability of an event', function() {
-		expect(
-			Math.abs(stats.binomcdf(20, .6, 10) - .244663)
-		).to.be.lessThan(.000001);
+		expect(stats.binomcdf(20, .6, 10)).to.be.within(.000001).of(.244663);
 	});
 });
 
 describe('stats.geompdf()', function() {
 	it('should compute the probability of a geometric event', function() {
-		expect(
-			Math.abs(stats.geompdf(.25, 4) - .105469)
-		).to.be.lessThan(.000001);
+		expect(stats.geompdf(.25, 4)).to.be.within(.000001).of(.105469);
 	});
 });
 
 describe('stats.geomcdf()', function() {
 	it('should compute the cumulative probability of an event', function() {
-		expect(
-			Math.abs(stats.geomcdf(.25, 4) - .683594)
-		).to.be.lessThan(.000001);
+		expect(stats.geomcdf(.25, 4)).to.be.within(.000001).of(.683594);
+	});
+});
+
+describe('stats.normalpdf()', function() {
+	it('should compute the normal probability funciton', function() {
+		expect(stats.normalpdf(1, 0, 1)).to.be.within(.000001).of(.241971);
+	});
+});
+
+describe('stats.normalcdf()', function() {
+	it('should compute the cumulative normal probability funciton', function() {
+		expect(stats.normalcdf(1, 0, 1)).to.be.within(.000001).of(.841345);
+	});
+
+	it ('should allow for an upper and lower value to be passed', function() {
+		expect(stats.normalcdf(-1, 1, 0, 1)).to.be.within(.000001).of(.682689);
+		expect(stats.normalcdf(-2, 1.5, 3, 1.8)).to.be.within(.000001).of(.199592);
+		expect(stats.normalcdf(-3.14, 2.71, 4, .5)).to.be.within(.00001).of(.00494);
 	});
 });

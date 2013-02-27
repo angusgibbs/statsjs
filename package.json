@@ -21,6 +21,6 @@
 	"main": "lib/stats",
 	"devDependencies": {
 		"mocha": "1.4.x",
-		"expect.js": "0.1.x"
+		"expect.js": "git://github.com/angusgibbs/expect.js.git"
 	}
 }
