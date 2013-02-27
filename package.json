@@ -4,7 +4,7 @@
 	"version": "1.0.4",
 	"author": "Angus Gibbs (http://angusgibbs.com)",
 	"homepage": "http://github.com/angusgibbs/statsjs",
-	"keywords": ["math", "stats", "statistics", "average", "mean", "min", "max", "standard", "deviation", "regression", "quartile", "median", "outliers"],
+	"keywords": ["math", "stats", "statistics", "average", "mean", "min", "max", "standard", "deviation", "regression", "quartile", "median", "outliers", "factorial", "probability", "permutation", "combination", "binomial", "geometric", "normal"],
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/angusgibbs/statsjs.git"
