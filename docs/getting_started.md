@@ -280,3 +280,14 @@ Computes the probability of a geometric event (i.e., P(x = `x`)), given the prob
 ### stats.geomcdf(*p*, *x*)
 
 Computes the cumulative probability of a geometric event (i.e., P(x <= `x`)), given the probability of success and event number.
+
+
+### stats.normalpdf(*x*, *mu*, *sigma*)
+
+Computes the normal probability of an event, given the event number, mean (mu), and standard deviation (sigma).
+
+### stats.normalcdf([*lower*, ]*upper*, *mu*, *sigma*)
+
+Computes the cumulative normal probability of an event, given the lower and upper bounds, mean (mu), and standard deviation (sigma).
+
+If no lower bound is passed, negative infinity is assumed (i.e., P(x <= `upper`) is returned).
