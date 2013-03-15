@@ -410,3 +410,29 @@ describe('stats.normalcdf()', function() {
 		expect(stats.normalcdf(-3.14, 2.71, 4, .5)).to.be.within(.00001).of(.00494);
 	});
 });
+
+describe('stats.invNorm()', function() {
+	it('should calculate the inverse normal correctly', function() {
+		expect(stats.invNorm(.35)).to.be.within(.00001).of(-.38532);
+		expect(stats.invNorm(.02)).to.be.within(.00001).of(-2.05375);
+		expect(stats.invNorm(.50)).to.equal(0);
+		expect(stats.invNorm(.98)).to.be.within(.00001).of(2.05375);
+	});
+});
+
+describe('stats.ZTest()', function() {
+	it('should calculate the z statistic and p value correctly', function() {
+		var result = stats.ZTest(275, 60, 272, 840, 'lessthan');
+		expect(result.z).to.be.within(.00001).of(-1.44914);
+		expect(result.p).to.be.within(.00001).of(.07365);
+	});
+});
+
+describe('stats.ZInterval()', function() {
+	it('should calculate the low, high, and margin of error', function() {
+		var result = stats.ZInterval(.0068, .8404, 3, .99);
+		expect(result.low).to.be.within(.0001).of(.8303);
+		expect(result.high).to.be.within(.0001).of(.8505);
+		expect(result.moe).to.be.within(.000001).of(.010113);
+	});
+});

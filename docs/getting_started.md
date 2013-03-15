@@ -291,3 +291,15 @@ Computes the normal probability of an event, given the event number, mean (mu), 
 Computes the cumulative normal probability of an event, given the lower and upper bounds, mean (mu), and standard deviation (sigma).
 
 If no lower bound is passed, negative infinity is assumed (i.e., P(x <= `upper`) is returned).
+
+### stats.invNorm(*p*)
+
+Finds the value of `x` such that P(x <= `x`) is equal to the `p` value that is passed on the standard normal curve.
+
+### stats.ZTest(*muZero*, *sigma*, *xBar*, *n*, *inequality)
+
+Runs a 1-mean z-test given the proposed population mean, population standard deviation, sample mean, sample size, and inequality. The inequality should be one of "notequal", "lessthan", or "greaterthan". The object that is returned will have two keys: `z`, the z-test statistic, and `p`, the P-value.
+
+### stats.ZInterval(*sigma*, *xBar*, *n*, *level*)
+
+Computes a 1-mean z-interval given the population standard deviation, sample mean, sample size, and confidence level (the confidence level should be greater than 0 and less than 1). The object that is returned will have three keys: `low`, the low end of the confidence interval, `high`, the high end of the confidence interval, and `moe`, the margin of error.
