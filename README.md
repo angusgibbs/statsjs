@@ -8,6 +8,7 @@ Stats.js currently supports many of the statistical functions that you might nee
 
 * regression lines (linear, power, exponential)
 * min, max, mean, median, first quartile, third quartile
+* least common multiple and greatest common factor
 * standard deviation
 * sorting a list of points by an attribute
 * probabilities (binomial, geometric, normal)

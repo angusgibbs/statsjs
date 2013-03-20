@@ -168,6 +168,14 @@ Returns a new stats object with all the outliers removed. Outliers are determine
 
 Returns the standard deviation of the data set.
 
+### #gcd()
+
+Returns the greatest common divisor of the data set.
+
+### #lcm()
+
+Returns the least common multiple of the data set.
+
 ### #expReg()
 
 Calculates the exponential regression equation for the data set, in the form y = a * b^x. Returns a JSON object with the coefficient (a), base (b), and correlation coefficient (r) for the linearized data.

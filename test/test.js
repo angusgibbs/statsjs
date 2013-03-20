@@ -341,6 +341,24 @@ describe('#set()', function() {
 	});
 });
 
+describe('#gcd()', function() {
+	it('should return the greatest common denominator of a set of numbers', function() {
+		expect(stats(22, 11).gcd()).to.equal(11);
+		expect(stats(22, 10).gcd()).to.equal(2);
+		expect(stats(61, 34).gcd()).to.equal(1);
+		expect(stats(22, 11, 33).gcd()).to.equal(11);
+		expect(stats(22, 11, 4).gcd()).to.equal(1);
+	});
+});
+
+describe('#lcm()', function() {
+	it('should return the least common multiple of a set of numbers', function() {
+		expect(stats(1, 2, 3, 4).lcm()).to.equal(12);
+		expect(stats(12, 19, 34).lcm()).to.equal(3876);
+		expect(stats(3, 6, 9, 12).lcm()).to.equal(36);
+	});
+});
+
 describe('stats.list()', function() {
 	it('should create a stats object with the bounds', function() {
 		expect(stats.list(0, 5).toArray()).to.eql([0, 1, 2, 3, 4, 5]);
