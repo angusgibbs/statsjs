@@ -25,7 +25,7 @@ See the [getting started guide](https://github.com/angusgibbs/statsjs/blob/maste
 
 ## Contributing
 
-Patches are welcome, just make sure there are matching unit tests. Tests use [mocha](http://visionmedia.github.com/mocha/) with [expect.js](https://github.com/LearnBoost/expect.js). Once you clone the repo (either your fork or this repository), `cd` into it and run `npm install` to install mocha and expect.js. Tests can be found within `test/test.js`.
+Patches are welcome, just make sure there are matching unit tests. Tests use [mocha](http://visionmedia.github.com/mocha/) with my fork of [expect.js](https://github.com/angusgibbs/expect.js) (which allows you to assert that a value is within a certain error range of another value). Once you clone the repo (either your fork or this repository), `cd` into it and run `npm install` to install mocha and expect.js. Tests can be found within `test/test.js`.
 
 ## License
 
