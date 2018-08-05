@@ -38,6 +38,10 @@ describe('#q1()', function() {
 	it('should return the first quartile of an even length array', function() {
 		expect(stats([4, 6, 1, 5, 7, 2, 6, 3]).q1()).to.equal(2.5);
 	});
+
+	it('should return the first quartile of a single element array', function() {
+		expect(stats([42]).q1()).to.equal(42);
+	});
 });
 
 describe('#q3()', function() {
@@ -47,6 +51,10 @@ describe('#q3()', function() {
 
 	it('should return the third quartile of an even length array', function() {
 		expect(stats([4, 6, 1, 5, 7, 2, 6, 3]).q3()).to.equal(6);
+	});
+
+	it('should return the third quartile of a single element array', function() {
+		expect(stats([42]).q3()).to.equal(42);
 	});
 });
 
