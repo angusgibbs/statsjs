@@ -1,10 +1,32 @@
 {
 	"name": "statsjs",
 	"description": "Provides functions for many of the statistical operations that you might need",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"author": "Angus Gibbs (http://angusgibbs.com)",
 	"homepage": "http://github.com/angusgibbs/statsjs",
-	"keywords": ["math", "stats", "statistics", "average", "mean", "min", "max", "standard", "deviation", "regression", "quartile", "median", "outliers", "factorial", "probability", "permutation", "combination", "binomial", "geometric", "normal", "z-test"],
+	"keywords": [
+		"math",
+		"stats",
+		"statistics",
+		"average",
+		"mean",
+		"min",
+		"max",
+		"standard",
+		"deviation",
+		"regression",
+		"quartile",
+		"median",
+		"outliers",
+		"factorial",
+		"probability",
+		"permutation",
+		"combination",
+		"binomial",
+		"geometric",
+		"normal",
+		"z-test"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/angusgibbs/statsjs.git"
@@ -20,7 +42,7 @@
 	],
 	"main": "lib/stats",
 	"devDependencies": {
-		"mocha": "1.4.x",
-		"expect.js": "git://github.com/angusgibbs/expect.js.git"
+		"expect.js": "git://github.com/angusgibbs/expect.js.git",
+		"mocha": "^1.4.3"
 	}
 }
